@@ -26,6 +26,7 @@ export default function CursorSparkle() {
   const idCounter = useRef(0);
   const rafRef = useRef<number>(0);
   const lastSpawn = useRef(0);
+  const isTouching = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,9 +42,27 @@ export default function CursorSparkle() {
     window.addEventListener("resize", resize);
 
     const onMouseMove = (e: MouseEvent) => {
+      if (isTouching.current) return;
       mousePos.current = { x: e.clientX, y: e.clientY };
     };
     window.addEventListener("mousemove", onMouseMove);
+
+    const onTouchStart = () => {
+      isTouching.current = true;
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+
+    const onTouchMove = (e: TouchEvent) => {
+      isTouching.current = true;
+      const touch = e.touches[0];
+      mousePos.current = { x: touch.clientX, y: touch.clientY };
+    };
+    const onTouchEnd = () => {
+      mousePos.current = { x: -999, y: -999 };
+      setTimeout(() => { isTouching.current = false; }, 300);
+    };
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
 
     const spawnParticle = (x: number, y: number) => {
       const maxLife = 40 + Math.random() * 30;
@@ -102,6 +121,7 @@ export default function CursorSparkle() {
         const { x, y } = mousePos.current;
         if (x > 0 && y > 0) {
           spawnParticle(x, y);
+          if (isTouching.current) spawnParticle(x, y);
         }
         lastSpawn.current = timestamp;
       }
@@ -125,6 +145,9 @@ export default function CursorSparkle() {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
 
