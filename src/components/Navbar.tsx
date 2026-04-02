@@ -36,6 +36,7 @@ export default function Navbar() {
   const { theme, toggle } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => {
@@ -45,6 +46,34 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [menuOpen]);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.slice(1));
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      const threshold = window.innerHeight * 0.35;
+
+      const firstSection = document.getElementById(sectionIds[0]);
+      if (firstSection && scrollY < firstSection.offsetTop - threshold) {
+        setActiveSection("");
+        return;
+      }
+
+      let current = "";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && scrollY >= el.offsetTop - threshold) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
@@ -58,7 +87,9 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="font-display text-xl font-800 text-fg tracking-tight"
+          className={`font-display text-xl font-800 tracking-tight transition-colors ${
+            activeSection === "" ? "text-accent" : "text-fg"
+          }`}
           style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
         >
           Lee Suyeon
@@ -67,16 +98,26 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm font-medium text-muted hover:text-fg transition-colors"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors relative ${
+                    isActive
+                      ? "text-accent"
+                      : "text-muted hover:text-fg"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
+                  )}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Actions */}
@@ -121,16 +162,21 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-card border-b border-subtle px-6 pb-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="block py-2 text-sm text-muted hover:text-fg transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`block py-2 text-sm font-medium transition-colors ${
+                  isActive ? "text-accent" : "text-muted hover:text-fg"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <div className="flex items-center gap-3 pt-3 border-t border-subtle mt-2">
             <a
               href={siteConfig.instagram}
