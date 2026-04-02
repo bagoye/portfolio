@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("theme") as Theme | null;
     const initial = saved || "dark";
     setTheme(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
+    document.documentElement.classList.remove("preload");
   }, []);
 
   const toggle = () => {

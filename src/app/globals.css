@@ -29,6 +29,10 @@
   --accent: #88e0d4;
 }
 
+.preload * {
+  transition: none !important;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -37,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg);
 }
 
 body {

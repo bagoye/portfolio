@@ -22,6 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){document.documentElement.classList.add('preload');var t=localStorage.getItem('theme');if(t!=='light'){document.documentElement.classList.add('dark');}})();`,
+          }}
+        />
+      </head>
       <body>
         <ThemeProvider>
           <CursorSparkle />
