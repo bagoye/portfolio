@@ -24,7 +24,7 @@ export const projects = [
     type: "company" as const,
     title: "밀크T 초등 학습 콘텐츠",
     description:
-      "국어 · 사회 · 독서논술 과목 *초등 학습 콘텐츠* 개발. Phaser 기반 게임형 인터랙션으로 학습 몰입도 향상. *신규 모듈 개발 및 유지보수 진행 중*.",
+      "국어 · 사회 · 독서논술 과목 *초등 학습 콘텐츠* 개발. 외주 JavaScript 하드코딩 콘텐츠를 기능 단위 Scene 구조로 재설계하고 공통 리소스 · 로직 분리. 차시 데이터를 JSON으로 정의하면 Scene 코드가 생성되는 *자동화 구조* 제작, 팀 표준 제작 방식으로 사용 중. 만화형 콘텐츠 *약 60차시*를 공통 진행 구조 + 차시별 데이터로 제작.",
     tags: ["Phaser", "Canvas", "TypeScript"],
     github: "",
     demo: "https://www.milkt.co.kr/About/SchoolStudy_tab01?gn_1",
@@ -35,8 +35,30 @@ export const projects = [
     type: "company" as const,
     title: "단어 게임 모듈",
     description:
-      "타 팀 콘텐츠 연동을 위한 *단어 버블 게임 독립 모듈* 설계. CreateJS 기반 씬 아키텍처 위에 *외부 API를 제공*해 init/correct/wrong/next 메서드만으로 게임 제어 가능.",
+      "타 팀 콘텐츠 연동을 위한 *단어 버블 게임 독립 모듈* 설계. CreateJS 기반 씬 아키텍처 위에 *외부 API를 제공*해 init/correct/wrong/next 메서드만으로 게임 제어 가능. 장면별로 필요한 리소스만 로드하도록 변경해 초기 로딩 *약 8~9초 → 약 3초*.",
     tags: ["TypeScript", "CreateJS", "Canvas"],
+    github: "",
+    demo: "",
+    featured: false,
+  },
+  {
+    id: 10,
+    type: "company" as const,
+    title: "학습 화면 공통 UI 컴포넌트",
+    description:
+      "버튼 · Toast · 문제 영역 · 정오답 · 타이머 · 다음 행동 등 *학습 화면 UI 6종* 정리. 각 UI의 상태 · 동작 규칙을 정하고 *공통 컴포넌트*로 구현.",
+    tags: ["React", "TypeScript"],
+    github: "",
+    demo: "",
+    featured: false,
+  },
+  {
+    id: 11,
+    type: "company" as const,
+    title: "구형 태블릿 재생 성능 개선",
+    description:
+      "구형 태블릿에서 재생 성능이 *약 10FPS*까지 저하. FPS 측정 UI를 직접 만들어 구간별 계측하고, 리소스 품질 조정 · 무비클립 단위 테스트로 원인 범위 축소. 컬러 필터가 적용된 무비클립의 과부하를 확인해 애니메이터와 리소스를 수정, *약 30FPS*로 개선.",
+    tags: [] as string[],
     github: "",
     demo: "",
     featured: false,
@@ -143,7 +165,7 @@ export const certifications = [
 
 export const experience = [
   {
-    role: "인터렉션 개발팀",
+    role: "인터랙션 개발팀",
     company: "천재교육",
     period: "2024.11 – 현재",
     description:
