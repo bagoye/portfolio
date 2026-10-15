@@ -42,6 +42,28 @@ export const projects = [
     featured: false,
   },
   {
+    id: 8,
+    type: "personal" as const,
+    title: "대저니유",
+    description:
+      "*반려동물과 함께하는 대전 여행* PWA. 4인 팀(기획 1 · 개발 3)에서 *내 여정 탭* 담당 — MBTI · 직접짓기 코스 위저드, 카카오맵 동선 지도, 다중 일정 캘린더, *실시간 공공데이터 집계* API 구현.",
+    tags: ["FE", "Next.js", "TypeScript"],
+    github: "https://github.com/bagoye/daejourneyu",
+    demo: "https://daejourneyu.vercel.app",
+    featured: false,
+  },
+  {
+    id: 9,
+    type: "personal" as const,
+    title: "bagoye-board",
+    description:
+      "*백엔드 흐름 학습*을 위해 Spring Boot + React로 만든 게시판. *JWT 인증*, 게시물 CRUD · 좋아요 · 댓글 구현.",
+    tags: ["Spring Boot", "React", "TypeScript"],
+    github: "https://github.com/bagoye/bagoye-board",
+    demo: "",
+    featured: false,
+  },
+  {
     id: 4,
     type: "personal" as const,
     title: "IT Job Dashboard",
