@@ -68,8 +68,8 @@ export const projects = [
     type: "personal" as const,
     title: "대저니유",
     description:
-      "*반려동물과 함께하는 대전 여행* PWA. 4인 팀(기획 1 · 개발 3)에서 *내 여정 탭* 담당 — MBTI · 직접짓기 코스 위저드, 카카오맵 동선 지도, 다중 일정 캘린더, *실시간 공공데이터 집계* API 구현.",
-    tags: ["FE", "Next.js", "TypeScript"],
+      "*반려동물과 함께하는 대전 여행* PWA. 4인 팀(기획 1 · 개발 3)에서 *내 여정 탭* 담당 — MBTI · 직접짓기 코스 위저드, 카카오맵 동선 지도, 다중 일정 캘린더, *실시간 공공데이터 집계* API 구현. *Gemini API 기반 AI 코스 추천* 백엔드 — 응답 스키마로 JSON 구조를 강제하고 후보 목록 밖의 장소 · 개수 오류를 서버에서 재검증.",
+    tags: ["FE", "Next.js", "TypeScript", "Express", "Gemini API"],
     github: "https://github.com/bagoye/daejourneyu",
     demo: "https://daejourneyu.vercel.app",
     featured: false,
