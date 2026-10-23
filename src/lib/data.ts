@@ -71,7 +71,7 @@ export const projects = [
       "일상 속 억울한 사연을 *AI 변호사 · 검사 · 판사*가 따져보는 참여형 웹서비스. 원고 모드(사연 접수 → 공방 → 심문 → AI 판결)와 판사 모드(준비된 사건에 사용자가 직접 판결) 제공. *서버 권한 상태 머신*으로 단계 · 질문 횟수를 제어하고, *Gemini 구조화 응답*을 Zod · 근거 ID로 검증해 모델이 사실을 덮어쓰지 못하게 설계. Web Speech API 기반 *보이스봇*, 사진 증거, Upstash Redis로 Vercel 서버리스 환경의 *멱등성 · 처리 잠금* 구현.",
     tags: ["React", "TypeScript", "Express", "Gemini API", "Redis"],
     github: "https://github.com/bagoye/ai-eogul-court",
-    demo: "",
+    demo: "https://ai-eogul-court.vercel.app",
     featured: false,
   },
   {
