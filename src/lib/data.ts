@@ -90,8 +90,8 @@ export const projects = [
     type: "personal" as const,
     title: "bagoye-board",
     description:
-      "*백엔드 흐름 학습*을 위해 Spring Boot + React로 만든 게시판. *JWT 인증*, 게시물 CRUD · 좋아요 · 댓글 구현.",
-    tags: ["Spring Boot", "React", "TypeScript"],
+      "*백엔드 흐름 학습*을 위해 Spring Boot + React로 만든 게시판. *JWT 인증*, 게시물 CRUD · 좋아요 · 댓글 구현. 이후 *OWASP Top 10 관점으로 백엔드 보안 점검 · 강화* — Refresh Token 1회용 회전, 로그인 5회 실패 시 계정 잠금, 업로드 파일 확장자 · 시그니처 검증과 Path Traversal 차단, USER/ADMIN 권한 분리, *보안 이벤트 로그 · 통계 API*. 차단 시나리오별 테스트를 대조군과 함께 작성.",
+    tags: ["Spring Boot", "Spring Security", "React", "TypeScript"],
     github: "https://github.com/bagoye/bagoye-board",
     demo: "",
     featured: false,
